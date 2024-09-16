@@ -1,0 +1,16 @@
+
+:root {
+    --borderRadius: 15px;
+    --lightGreyBorder: solid 2px #d6d6d6;
+}
+
+
+dialog{
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 430px;
+    min-height: 150px;
+    border-radius: var(--borderRadius);
+    border: var(--lightGreyBorder);
+}
