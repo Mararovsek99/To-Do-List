@@ -10,22 +10,23 @@
             <form id="toDoForm">
 
                 <div class="Form-up">
-                    <div class="Title">
+                    <div class="title">
                         <input type="text" id="title" name="title" placeholder="Task name" required>
                         <button class="closeBtn">X</button>
                     </div>
+
                     <div class="addinfo">
-                        <input type="date" id="dueDate" name="dueDate" placeholder="hehe" required>
-                        <select id="importance" name="importance">
-                            <option value="1">1 - Low</option>
-                            <option value="2">2 - Medium</option>
-                            <option value="3">3 - High</option>
+                        <input  class="infoBtn" type="date" id="dueDate" name="dueDate" required>
+                        <select class="infoBtn" id="importance" name="importance">
+                            <option value="1">- Low</option>
+                            <option value="2">- Medium</option>
+                            <option value="3">- High</option>
                             </select>
                     </div>
                 </div>
                 <div class="Form-down">
                     <div class="Title">
-                        <textarea id="description" name="description" placeholder="Task Description" rows="3"></textarea>
+                        <textarea id="description" name="description" placeholder="Task Description" maxlength="1000" required></textarea>
                         <button class="SumBtn" type="submit">Add task</button>
                     </div>
                 </div>
