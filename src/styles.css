@@ -6,6 +6,11 @@
     font-family: 'RobotoBold';
     src:  url(./fonts/Roboto-Bold.ttf);
 }
+@font-face {
+    font-family: 'RobotoLight';
+    src:  url(./fonts/Roboto-Light.ttf);
+}
+
 
 @keyframes X-shaking {
     0% { transform: translateX(3px); }
@@ -25,12 +30,16 @@
     --lightGreyBorder: solid 1px #d6d6d6;
     --h2FontSize: 25px;
     --lightGrey: #5f5f5f;
+    --mainPageLightGrey:#fafafa;
+    --mainPageGrey:#e9e9e9;
     --errorRed: #ff0000;
     --ButtonsGrey: color: rgba(38, 52, 74, .5);
 }
 
 body{
-    background-color: #f2f5f7;
+    background-color: var(--mainPageLightGrey);
+    margin: 15px;
+    display: flex;
 }
 dialog{
     position: absolute;
@@ -122,6 +131,33 @@ dialog #title{
   filter: saturate(0.2) opacity(0.5);
   -webkit-filter: saturate(0.2) opacity(0.5);
   cursor: not-allowed;
+}
+#menu{
+    width: 20%;
+    height: calc(100vh - 30px);
+    background-color: var(--lightGrey);
+    border-radius: var(--borderRadius);
+    background-color: var(--mainPageGrey);
+}
+#TaskContainer{
+    width: calc(70vw - 50px);
+    min-height: calc(100vh - 30px);
+}
+#TaskContainerHeader{
+    padding-left: 40px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    width: 13vw;
+    margin: 15px;
+    font-family: RobotoBold;
+}
+#TaskContainerHeader h1{
+    font-size: 50px;
+}
+#TaskContainerHeader h2{
+    font-size: 40px;
+    font-family: RobotoLight;
 }
 @media only screen and (max-width: 600px) {
     dialog{
