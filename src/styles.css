@@ -36,6 +36,7 @@
     --lightGreyBorder: solid 2px #d6d6d6;
     --lightGreyBorder: solid 1px #d6d6d6;
     --h2FontSize: 25px;
+    --TasksFontsize: 20px;
     --lightGrey: #5f5f5f;
     --mainPageLightGrey:#fafafa;
     --mainPageGrey:#f3f3f3;
@@ -156,18 +157,19 @@ dialog #title{
 #TaskContainer{
     width: calc(70vw - 50px);
     min-height: calc(100vh - 30px);
+    padding-left: 20px;
 }
 #TaskContainerHeader{
     padding-left: 40px;
     display: flex;
     align-items: baseline;
-    justify-content: space-between;
-    width: 13vw;
+    justify-content: left;
     margin: 15px;
     font-family: RobotoBold;
 }
 #TaskContainerHeader h1{
     font-size: 50px;
+    margin-right: 50px;
 }
 #TaskContainerHeader h2{
     font-size: 40px;
@@ -225,7 +227,26 @@ dialog #title{
     border-radius: 5px;
     margin-right: 10px;
 }
-
+.TaskRow{
+    display: flex;
+    margin: 2px 15px;
+    height: 40px;
+    align-items: center;
+    font-family: nunitoBold;
+    font-size: var(--TasksFontsize);
+    cursor: pointer;
+    border-radius: 5px;
+    color: var(--lightFontGrey);
+    border-top: 3px groove var(--mainPageLightGrey);
+    transition: background-color 0.3s ease;
+}
+.TaskRow:hover{
+    background-color: var(--mainPageGrey);
+}
+.TaskRow:hover .menuIcon {
+    transform: rotate(180deg);
+    transition: transform 0.7s ease;
+}
 
 @media only screen and (max-width: 600px) {
     dialog{
