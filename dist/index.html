@@ -7,8 +7,88 @@
 <script defer src="main.js"></script></head>
 <body>
 
+    <div id="menu">
+        <div id="menuTitle">
+            <h2>Menu</h2>
+            <img src="5dfa37b35aa6439ccde1.png" alt="menu icone" id="menuIcon">
+        </div>
 
+
+        <div class="menuTasks">
+            <h3>TASKS</h3>
+            <div class="menuRow">
+                <img src="8a2741177f9bd0fbf1ef.png" alt="comming next icon" class="menuIcon">
+                <h4>Upcoming</h4>
+                <h5>12</h5>
+            </div>
+            <div class="menuRow">
+                <img src="ac9e0c1580d11f2f7e26.png" alt="comming next icon" class="menuIcon">
+                <h4>Today</h4>
+                <h5>5</h5>
+            </div>
+            <div class="menuRow">
+                <img src="4d46541e34b901509ebd.png" alt="comming next icon" class="menuIcon">
+                <h4>Week</h4>
+                <h5>8</h5>
+            </div>
+            <div class="menuRow">
+                <img src="feab74813f8a63e8026d.png" alt="comming next icon" class="menuIcon">
+                <h4>Sticky Wall</h4>
+                <h5>12</h5>
+            </div>
+        </div>
+
+
+        <div class="menuTasks">
+            <h3>PROJECTS</h3>
+            <div class="menuRow">
+                <img src="8a2741177f9bd0fbf1ef.png" alt="comming next icon" class="menuIcon">
+                <h4>Personal</h4>
+                <h5>2</h5>
+            </div>
+            <div class="menuRow">
+                <img src="ac9e0c1580d11f2f7e26.png" alt="comming next icon" class="menuIcon">
+                <h4>Work</h4>
+                <h5>1</h5>
+            </div>
+            <div class="menuRow">
+                <img src="4d46541e34b901509ebd.png" alt="comming next icon" class="menuIcon">
+                <h4>Shopping</h4>
+                <h5>3</h5>
+            </div>
+            <div class="menuRow">
+                <img src="5f21e5d469f9efb7f6ec.png" alt="comming next icon" class="menuIcon">
+                <h4>Add New Project</h4>
+            </div>
+        </div>
+
+
+
+    </div>
     <div id="TaskContainer">
+        <div id="TaskContainerHeader">
+            <h1>Upcoming</h1>
+            <h2>2</h2>
+        </div>
+
+        <div id="addDiv" class="TaskRow">
+            <img src="5f21e5d469f9efb7f6ec.png" alt="comming next icon" class="menuIcon">
+                <h4>Add New Task</h4>
+        </div>
+
+
+        <div id="TaskRow" class="TaskRow">
+
+            <div id="mainInfo" class="TaskDisplay">
+                <input type="checkbox">
+                <h4>Add New Task</h4>
+            </div>
+
+            <div id="addInfo" class="TaskDisplay">
+
+            </div>
+            
+        </div>
 
     </div>
 
@@ -36,14 +116,13 @@
 
 
 
-
-       <dialog open>
+       <dialog id="addTaskDia">
             <form id="toDoForm">
 
                 <div class="Form-up">
                     <div class="title">
                         <input type="text" id="title" name="title" placeholder="Task name" required>
-                        <button class="closeBtn">X</button>
+                        <button id="closeBtn" class="closeBtn">X</button>
                     </div>
 
                     <div class="addinfo">

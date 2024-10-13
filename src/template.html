@@ -70,9 +70,24 @@
             <h1>Upcoming</h1>
             <h2>2</h2>
         </div>
+
         <div id="addDiv" class="TaskRow">
             <img src="./img/add.png" alt="comming next icon" class="menuIcon">
                 <h4>Add New Task</h4>
+        </div>
+
+
+        <div id="TaskRow" class="TaskRow">
+
+            <div id="mainInfo" class="TaskDisplay">
+                <input type="checkbox">
+                <h4>Add New Task</h4>
+            </div>
+
+            <div id="addInfo" class="TaskDisplay">
+
+            </div>
+            
         </div>
 
     </div>
@@ -101,13 +116,13 @@
 
 
 
-       <dialog>
+       <dialog id="addTaskDia">
             <form id="toDoForm">
 
                 <div class="Form-up">
                     <div class="title">
                         <input type="text" id="title" name="title" placeholder="Task name" required>
-                        <button class="closeBtn">X</button>
+                        <button id="closeBtn" class="closeBtn">X</button>
                     </div>
 
                     <div class="addinfo">
