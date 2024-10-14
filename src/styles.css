@@ -230,16 +230,19 @@ dialog #title{
 }
 .TaskRow{
     display: flex;
-    margin: 2px 15px;
-    height: 40px;
+    margin: 2px 15px 10px 15px;
+    min-height: 40px;
+    height: max-content;
     align-items: center;
     font-family: nunitoBold;
     font-size: var(--TasksFontsize);
     cursor: pointer;
     border-radius: 5px;
     color: var(--lightFontGrey);
+    border : 1px solid var(--mainPageGreyHover);
     border-top: 3px groove var(--mainPageLightGrey);
     transition: background-color 0.3s ease;
+    overflow: hidden;
 }
 #TaskRow{
     display: flex;
@@ -258,7 +261,17 @@ dialog #title{
     display: flex;
     gap: 15px;
     padding-left: 20px;
+    padding-top: 6px;
     color: var(--Darkfontgray);
+}
+.Taskinfo{
+    font-size: 13px;
+}
+#addInfo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 

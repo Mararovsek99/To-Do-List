@@ -1,5 +1,6 @@
 // Import the tasksArray from tasks.js
 import {templateTodos} from "./index";
+import dueDateIcon from './img/dueDate.png';
 
 // Function to render tasks
 function renderTasks() {
@@ -17,19 +18,19 @@ function renderTasks() {
                 <h4>${task.title}</h4>
             </div>
 
-            <div id="addInfo" class="TaskDisplay">
+            <div id="addInfo" class="Taskinfo">
+                <img src="${dueDateIcon}" alt="dueDate" class="menuIcon">
+                <div class="date">${task.dueDate}</div>
+                <div class="priority">${task.importance}</div>
+                <div class="project">${task.project}</div>
+
+                
 
             </div>
-            
+            <div id="description" class="Taskinfo">
+                ${task.description}
+            </div>
         </div>
-
-
-            <div class="task-title">${task.title}</div>
-            <div class="task-desc">${task.description}</div>
-            <div class="task-date">Due: ${task.dueDate}</div>
-            <div class="task-importance">Priority: ${task.importance}</div>
-            <div class="task-project">Project: ${task.project}</div>
-            <div class="task-status">${task.isDone ? 'Completed' : 'Pending'}</div>
         `;
         taskContainer.appendChild(taskElement);
     });
