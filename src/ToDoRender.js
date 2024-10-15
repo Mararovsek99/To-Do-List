@@ -21,7 +21,6 @@ function renderTasks() {
             <div id="addInfo" class="Taskinfo">
                 <img src="${dueDateIcon}" alt="dueDate" class="menuIcon">
                 <div class="date">${task.dueDate}</div>
-                <div class="priority">${task.importance}</div>
                 <div class="project">${task.project}</div>
 
                 

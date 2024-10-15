@@ -96,9 +96,9 @@ dialog #title{
     resize: none;
     height: 50px;
     border: none;
-    padding: 10px;
     outline: none;
     margin-bottom: 20px;
+    color: var(--Darkfontgray);
 }
 #inputError{
     width: 100%;
@@ -266,12 +266,28 @@ dialog #title{
 }
 .Taskinfo{
     font-size: 13px;
+    padding: 10px 10px 10px 60px;
+    gap: 10px;
+    
+}
+.Taskinfo img{
+    padding-right: 5px;
+    margin: 0px;
+    
 }
 #addInfo{
     display: flex;
     justify-content: center;
     align-items: center;
 
+}
+.task-item{
+    height: 45px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.task-item:hover .menuIcon{
+    transition: none;
 }
 
 
