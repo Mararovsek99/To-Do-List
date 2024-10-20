@@ -3,11 +3,10 @@
 
 import "./styles.css";
 import {Task, CreateTodo} from "./createToDos";
-import {StartRendering} from "./ToDoRender.js";
-
+import {StartRendering, taskOpenListener,displayChosenGroup,projectCounter} from "./ToDoRender.js";
 
 const createTodo = new CreateTodo();
-export const templateTodos = createTodo.getTasks();
+const templateTodos = createTodo.getTasks();
 
 
 
@@ -23,4 +22,7 @@ closeFormBtn.addEventListener("click", () => {
 })
 
 
-StartRendering();
+StartRendering(templateTodos);
+taskOpenListener();
+displayChosenGroup(createTodo);
+projectCounter(createTodo);

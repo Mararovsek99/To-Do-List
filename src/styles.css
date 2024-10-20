@@ -148,11 +148,12 @@ dialog #title{
   cursor: not-allowed;
 }
 #menu{
+    position: sticky;
     width: 300px;
     height: calc(100vh - 30px);
-    background-color: var(--lightGrey);
     border-radius: var(--borderRadius);
     background-color: var(--mainPageGrey);
+
 }
 #TaskContainer{
     width: calc(70vw - 50px);
@@ -253,7 +254,7 @@ dialog #title{
 .TaskRow:hover{
     background-color: var(--mainPageGrey);
 }
-.TaskRow:hover .menuIcon {
+.TaskRow:hover #menuIcon {
     transform: rotate(180deg);
     transition: transform 0.7s ease;
 }
@@ -282,14 +283,18 @@ dialog #title{
 
 }
 .task-item{
-    height: 45px;
+    max-height: 45px;
     overflow: hidden;
     margin-bottom: 10px;
+    transition: max-height 0.7s ease;
 }
-.task-item:hover .menuIcon{
-    transition: none;
+.task-item-open{
+    max-height: 300px;
+    overflow:hidden;
 }
-
+.task-item-open > .TaskRow{
+    background-color: var(--mainPageGrey); 
+}
 
 
 
