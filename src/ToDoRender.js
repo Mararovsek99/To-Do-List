@@ -1,6 +1,9 @@
 
+import deleteIcon from './img/delete-icon.png';
 import dueDateIcon from './img/dueDate.png';
+import editIcon from './img/edit-icon.png';
 import {CreateTodo} from "./createToDos";
+import {clickDeleteListener} from "./index.js";
 
 
 function renderTasks(array) {
@@ -17,23 +20,24 @@ function renderTasks(array) {
 
             <div id="TaskRow" class="TaskRow">
 
-            <div id="mainInfo" class="TaskDisplay">
-                <input type="checkbox" ${task.isDone ? `checked` : ``}>
-                <h4>${task.title}</h4>
-            </div>
+        <div id="mainInfo" class="TaskDisplay">
+            <input type="checkbox" ${task.isDone ? `checked` : ``}>
+            <h4>${task.title}</h4>
 
-            <div id="addInfo" class="Taskinfo">
-                <img src="${dueDateIcon}" alt="dueDate" class="menuIcon">
-                <div class="date">${task.dueDate}</div>
-                <div class="project">${task.project}</div>
-
-                
-
-            </div>
-            <div id="description" class="Taskinfo">
-                ${task.description}
-            </div>
         </div>
+
+        <div id="addInfo" class="Taskinfo">
+            <img src="${dueDateIcon}" alt="dueDate" class="menuIcon">
+            <div class="date">${task.dueDate}</div>
+            <div class="project">${task.project}</div>
+            <img src="${editIcon}" alt="Edit Task icon" class="menuIcon editIcon" id="editIcon" data-id="${task.id}">
+            <img src="${deleteIcon}" alt="Delete Task icon" class="menuIcon deleteIcon" id="deleteIcon" data-id="${task.id}">
+
+        </div>
+        <div id="description" class="Taskinfo">
+            ${task.description}
+        </div>
+    </div>
         `;
         taskContainer.appendChild(taskElement);
     });
@@ -52,18 +56,33 @@ export function taskOpenListener(){
 
     taskscontainer.addEventListener("click", function(event){
         const taskItem = event.target.closest('.task-item');
-
-        if(taskItem.classList.contains("task-item")){
+        if (taskItem) {
             taskItem.classList.toggle("task-item-open");
         }
+       
     });
 }
   
 export function displayChosenGroup(createTodo){
     const menu = document.getElementById("menu");
     const mainTitle = document.getElementById("mainTitle");
+    let title = mainTitle.textContent;
 
-    menu.addEventListener("click", function(event){
+    menu.addEventListener("click", function(event) {
+
+        const classFinder = event.target.closest(".group");
+        const classFinderDate = event.target.closest(".groupDate");
+
+        if (classFinder){
+            title = classFinder.querySelector("h4").textContent;
+        }
+        else if(classFinderDate){
+            title = classFinderDate.querySelector("h4").textContent;
+        }
+        GroupRender(event);
+    });
+    
+        function GroupRender(event){
         const classFinder = event.target.closest(".group");
         const classFinderDate = event.target.closest(".groupDate");
             if (classFinder) {
@@ -73,13 +92,11 @@ export function displayChosenGroup(createTodo){
                 taskItem.remove();
             });
 
-            const title = classFinder.querySelector("h4").textContent;
             mainTitle.textContent = title;
 
             const ToDo = createTodo.getTasks();
-            console.log(ToDo);
             const ToDoGroup = ToDo.filter(todo => todo.project.replace(/^["']|["']$/g, "") === title);
-            console.log(ToDoGroup);
+
             renderTasks(ToDoGroup);
 
             }
@@ -119,9 +136,48 @@ export function displayChosenGroup(createTodo){
                 })
                 renderTasks(ToDoGroup);
             }
-        
-    });
+            clickDeleteListener();
+    }
 }
+export function addTaskInGroup(createTodo) {
+    const mainTitle = document.getElementById("mainTitle");
+    const title = mainTitle.textContent;
+
+    const ToDo = createTodo.getTasks();
+    let ToDoGroup;
+
+    if (title === "Upcoming" || title === "Today" || title === "Week") {
+        ToDoGroup = ToDo.filter(todo => {
+            const dueDate = new Date(todo.dueDate);
+            dueDate.setHours(0, 0, 0, 0);
+
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const oneWeek = new Date();
+            oneWeek.setDate(today.getDate() + 7);
+            oneWeek.setHours(0, 0, 0, 0);
+
+            if (title === "Upcoming") {
+                return dueDate >= today;
+            } else if (title === "Today") {
+                return dueDate.toDateString() === today.toDateString();
+            } else if (title === "Week") {
+                return dueDate >= today && dueDate <= oneWeek;
+            }
+            return false;
+        });
+    } else {
+        ToDoGroup = ToDo.filter(todo => todo.project.replace(/^["']|["']$/g, "") === title);
+    }
+
+    const openTasks = document.querySelectorAll(".task-item");
+    openTasks.forEach(taskItem => {
+        taskItem.remove();
+    });
+
+    renderTasks(ToDoGroup);
+}
+
 
 export function projectCounter(Todos){
 

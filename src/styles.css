@@ -295,7 +295,12 @@ dialog #title{
 .task-item-open > .TaskRow{
     background-color: var(--mainPageGrey); 
 }
-
+#deleteIcon{
+    margin-left: 30px;
+}
+.urgent{
+    color: orange;
+}
 
 
 

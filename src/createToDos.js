@@ -1,5 +1,10 @@
+import {projectCounter, addTaskInGroup} from "./ToDoRender.js";
+import {clickDeleteListener} from "./index.js";
+let taskIdCounter = 0;
+
 export class Task{
     constructor(title, description = "", dueDate, importance = 1 , isDone = false, project = "Default"){
+        this.id = taskIdCounter++;
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -26,7 +31,8 @@ export class CreateTodo{
         const taskTitle = this.taskForminfo.elements["title"].value;
         const taskDate = this.taskForminfo.elements["dueDate"].value;
         const taskImportance = this.taskForminfo.elements["importance"].value;
-        const taskDesc = this.taskForminfo.elements["description"].value;
+        const taskDesc = this.taskForminfo.elements["description"].value;  
+        const taskProject = document.getElementById("mainTitle").textContent;
 
         if (!taskTitle && !taskDate) {
             document.getElementById("inputError").textContent = "Title and due date are required.";
@@ -45,7 +51,7 @@ export class CreateTodo{
 
         }
 
-        const newTask = new Task(taskTitle, taskDesc, taskDate, taskImportance )
+        const newTask = new Task(taskTitle, taskDesc, taskDate, taskImportance,false, taskProject)
 
 
         this.tasks.push(newTask);
@@ -54,7 +60,10 @@ export class CreateTodo{
 
         const form = document.getElementById("addTaskDia");
         form.close();
-    }
+        projectCounter(this);
+        addTaskInGroup(this);
+        clickDeleteListener();
+        }
     addTemplateTasks(){
         /*CREATE SOME TODOS with chatGPT*/
         const newTask1 = new Task("Grocery shopping", "Buy milk, eggs, and bread", "2024-10-15", 2, false, "Shopping");
@@ -65,7 +74,7 @@ export class CreateTodo{
         const newTask6 = new Task("Buy new shoes", "Look for running shoes at the mall", "2024-10-17", 1, false, "Shopping");
         const newTask7 = new Task("Birthday gift", "Order a present for Sarah's birthday", "2024-10-18", 2, false, "Personal");
         const newTask8 = new Task("Submit code review", "Review John's pull request on GitHub", "2024-10-27", 3, true, "Work"); // Future
-        const newTask9 = new Task("Read a book", "Read 20 pages of the new sci-fi novel", "2024-10-28", 1, false, "Personal"); // Future
+        const newTask9 = new Task("Read a book", "Read 20 pages of the new sci-fi novel", "2024-10-28", 1, false, "Urgent"); // Future
         const newTask10 = new Task("Plan weekend trip", "Research hiking spots nearby", "2024-10-20", 2, false, "Personal");
         const newTask11 = new Task("Laundry", "Wash and fold clothes", "2024-10-21", 1, true, "Default"); // Future
         const newTask12 = new Task("Email client", "Send project proposal to client", "2024-10-14", 3, false, "Work");
@@ -82,7 +91,7 @@ export class CreateTodo{
         const newTask23 = new Task("Workout", "Do a 45-minute strength training", "2024-10-31", 1, false, "Personal"); // Future
         const newTask24 = new Task("Team meeting", "Discuss Q4 goals", "2024-11-01", 3, true, "Work"); // Future
         const newTask25 = new Task("Pick up dry cleaning", "Collect suits from dry cleaner", "2024-11-02", 1, false, "Personal"); // Future
-        const newTask26 = new Task("Call bank", "Inquire about loan options", "2024-11-03", 2, false, "Personal"); // Future
+        const newTask26 = new Task("Call bank", "Inquire about loan options", "2024-11-03", 2, false, "Urgent"); // Future
         const newTask27 = new Task("Prepare presentation", "Create slides for next week's meeting", "2024-11-04", 3, false, "Work"); // Future
         const newTask28 = new Task("Buy new laptop", "Research laptops for work", "2024-11-05", 2, false, "Shopping"); // Future
         const newTask29 = new Task("Dentist appointment", "Annual dental checkup", "2024-11-06", 2, false, "Personal"); // Future
@@ -110,4 +119,12 @@ export class CreateTodo{
     getTasks(){
         return this.tasks;
     }
+    deleteTask(taskId) {
+        this.tasks = this.tasks.filter(task => task.id !== parseInt(taskId, 10)); // Filter out the task by ID
+        addTaskInGroup(this);
+        projectCounter(this);
+        clickDeleteListener();
+    }
+    
+    
 }

@@ -22,7 +22,27 @@ closeFormBtn.addEventListener("click", () => {
 })
 
 
+
+
 StartRendering(templateTodos);
 taskOpenListener();
 displayChosenGroup(createTodo);
 projectCounter(createTodo);
+
+
+
+
+export function clickDeleteListener() {
+    const deleteButtons = document.querySelectorAll(".deleteIcon");
+    
+    deleteButtons.forEach((button) => {
+        button.removeEventListener("click", handleDelete);
+        button.addEventListener("click", handleDelete);
+    });
+}
+
+function handleDelete(event) {
+    const taskId = event.target.dataset.id; 
+    createTodo.deleteTask(taskId);
+}
+clickDeleteListener();
