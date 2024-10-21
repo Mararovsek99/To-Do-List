@@ -1,5 +1,5 @@
 import {projectCounter, addTaskInGroup} from "./ToDoRender.js";
-import {clickDeleteListener} from "./index.js";
+import {clickDeleteListener,editTaskListener} from "./index.js";
 let taskIdCounter = 0;
 
 export class Task{
@@ -124,6 +124,46 @@ export class CreateTodo{
         addTaskInGroup(this);
         projectCounter(this);
         clickDeleteListener();
+    }
+    editTask(taskId) {
+        console.log(taskId);
+
+        const editTask = this.tasks.find(task => task.id === parseInt(taskId, 10));
+        
+        //populate form
+        const title = document.getElementById("editTitle");
+        const dueDate = document.getElementById("editDueDate");
+        const importance = document.getElementById("editImportance");
+        const description = document.getElementById("editDescription");
+
+        title.value = editTask.title;
+        dueDate.value = editTask.dueDate;
+        importance.value = editTask.importance;
+        description.value = editTask.description;
+
+        //listener for saving
+        const saveBtn = document.getElementById("editNewTaskBtn");
+        const editForm = document.getElementById("editTaskDia");
+
+        const newSaveBtn = saveBtn.cloneNode(true);
+        saveBtn.replaceWith(newSaveBtn);
+
+        const that = this;
+
+        function updateTask(event){
+            event.preventDefault();
+    
+           editTask.title = title.value ;
+           editTask.dueDate = dueDate.value ;
+           editTask.importance = importance.value ;
+           editTask.description = description.value ;
+
+           addTaskInGroup(that);
+           editForm.close();
+           editTaskListener();
+        }
+
+        newSaveBtn.addEventListener("click", updateTask);
     }
     
     

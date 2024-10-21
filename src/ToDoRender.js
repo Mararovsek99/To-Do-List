@@ -3,7 +3,7 @@ import deleteIcon from './img/delete-icon.png';
 import dueDateIcon from './img/dueDate.png';
 import editIcon from './img/edit-icon.png';
 import {CreateTodo} from "./createToDos";
-import {clickDeleteListener} from "./index.js";
+import {clickDeleteListener,editTaskListener} from "./index.js";
 
 
 function renderTasks(array) {
@@ -137,6 +137,7 @@ export function displayChosenGroup(createTodo){
                 renderTasks(ToDoGroup);
             }
             clickDeleteListener();
+            editTaskListener();
     }
 }
 export function addTaskInGroup(createTodo) {

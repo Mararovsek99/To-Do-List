@@ -42,17 +42,17 @@
         <div class="menuTasks">
             <h3>PROJECTS</h3>
             <div class="menuRow group">
-                <img src="./img/comming next.png" alt="comming next icon" class="menuIcon">
+                <img src="./img/circle-red.png" alt="red circle" class="menuIcon">
                 <h4>Personal</h4>
                 <h5 class="projectNum">0</h5>
             </div>
             <div class="menuRow group">
-                <img src="./img/tasks.png" alt="comming next icon" class="menuIcon">
+                <img src="./img/circle-blue.png" alt="blue circle" class="menuIcon">
                 <h4>Work</h4>
                 <h5 class="projectNum">0</h5>
             </div>
             <div class="menuRow group">
-                <img src="./img/calendar.png" alt="comming next icon" class="menuIcon">
+                <img src="./img/circle-yellow.png" alt="yellow circle" class="menuIcon">
                 <h4>Shopping</h4>
                 <h5 class="projectNum">0</h5>
             </div>
@@ -75,19 +75,6 @@
     </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -125,6 +112,44 @@
             </form>
 
        </dialog>
+
+
+       
+
+
+
+
+
+
+       
+       <dialog id="editTaskDia">
+        <form id="editToDoForm">
+
+            <div class="Form-up">
+                <div class="title">
+                    <input type="text" id="editTitle" name="title" placeholder="Task name" required>
+                    <button id="editCloseBtn" class="closeBtn">X</button>
+                </div>
+
+                <div class="addinfo">
+                    <input  class="infoBtn" type="date" id="editDueDate" name="dueDate" required >
+                    <select class="infoBtn" id="editImportance" name="importance">
+                        <option value="1">- Low</option>
+                        <option value="2">- Medium</option>
+                        <option value="3">- High</option>
+                        </select>
+                </div>
+            </div>
+            <div class="Form-down">
+                <div class="Title">
+                    <textarea id="editDescription" name="description" placeholder="Task Description" maxlength="1000" required></textarea>
+                    <button id="editNewTaskBtn" class="SumBtn" type="submit">Save task</button>
+                    <div id="editInputError"></div>
+                </div>
+            </div>
+        </form>
+
+   </dialog>
           
 </body>
 </html>
