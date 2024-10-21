@@ -16,49 +16,45 @@
 
         <div class="menuTasks">
             <h3>TASKS</h3>
-            <div class="menuRow">
+            <div class="menuRow groupDate">
                 <img src="8a2741177f9bd0fbf1ef.png" alt="comming next icon" class="menuIcon">
                 <h4>Upcoming</h4>
-                <h5>12</h5>
+                <h5 class="projectNum">0</h5>
             </div>
-            <div class="menuRow">
+            <div class="menuRow groupDate">
                 <img src="ac9e0c1580d11f2f7e26.png" alt="comming next icon" class="menuIcon">
                 <h4>Today</h4>
-                <h5>5</h5>
+                <h5 class="projectNum">0</h5>
             </div>
-            <div class="menuRow">
+            <div class="menuRow groupDate">
                 <img src="4d46541e34b901509ebd.png" alt="comming next icon" class="menuIcon">
                 <h4>Week</h4>
-                <h5>8</h5>
+                <h5 class="projectNum">0</h5>
             </div>
-            <div class="menuRow">
+            <div class="menuRow group">
                 <img src="feab74813f8a63e8026d.png" alt="comming next icon" class="menuIcon">
-                <h4>Sticky Wall</h4>
-                <h5>12</h5>
+                <h4 class="urgent">Urgent</h4>
+                <h5 class="projectNum">0</h5>
             </div>
         </div>
 
 
         <div class="menuTasks">
             <h3>PROJECTS</h3>
-            <div class="menuRow">
-                <img src="8a2741177f9bd0fbf1ef.png" alt="comming next icon" class="menuIcon">
+            <div class="menuRow group">
+                <img src="5bab70517a703bc41f2b.png" alt="red circle" class="menuIcon">
                 <h4>Personal</h4>
-                <h5>2</h5>
+                <h5 class="projectNum">0</h5>
             </div>
-            <div class="menuRow">
-                <img src="ac9e0c1580d11f2f7e26.png" alt="comming next icon" class="menuIcon">
+            <div class="menuRow group">
+                <img src="9b283a664a3d5272da3c.png" alt="blue circle" class="menuIcon">
                 <h4>Work</h4>
-                <h5>1</h5>
+                <h5 class="projectNum">0</h5>
             </div>
-            <div class="menuRow">
-                <img src="4d46541e34b901509ebd.png" alt="comming next icon" class="menuIcon">
+            <div class="menuRow group">
+                <img src="619573043c9ca0eb2b5b.png" alt="yellow circle" class="menuIcon">
                 <h4>Shopping</h4>
-                <h5>3</h5>
-            </div>
-            <div class="menuRow">
-                <img src="5f21e5d469f9efb7f6ec.png" alt="comming next icon" class="menuIcon">
-                <h4>Add New Project</h4>
+                <h5 class="projectNum">0</h5>
             </div>
         </div>
 
@@ -67,56 +63,18 @@
     </div>
     <div id="TaskContainer">
         <div id="TaskContainerHeader">
-            <h1>Upcoming</h1>
-            <h2>2</h2>
+            <h1 id="mainTitle">Upcoming</h1>
+            <h2 id="titleNum">2</h2>
         </div>
 
         <div id="addDiv" class="TaskRow">
-            <img src="5f21e5d469f9efb7f6ec.png" alt="comming next icon" class="menuIcon">
+            <img src="5f21e5d469f9efb7f6ec.png" alt="comming next icon" class="menuIcon" id="menuIcon">
                 <h4>Add New Task</h4>
-        </div>
-
-
-        <div id="TaskRow" class="TaskRow">
-
-            <div id="mainInfo" class="TaskDisplay">
-                <input type="checkbox">
-                <h4>Grocery shopping</h4>
-            </div>
-
-            <div id="addInfo" class="Taskinfo">
-                <img src="8f37a93d8c714d2e9392.png" alt="dueDate" class="menuIcon">
-                <div class="date">2024-10-14</div>
-                <div class="priority">HIGH</div>
-                <div class="project">SHOPPING</div>
-
-                
-
-            </div>
-            <div id="description" class="Taskinfo">
-                    Buy milk, eggs, and bread
-            </div>
         </div>
             
     </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -136,7 +94,7 @@
                     </div>
 
                     <div class="addinfo">
-                        <input  class="infoBtn" type="date" id="dueDate" name="dueDate" required>
+                        <input  class="infoBtn" type="date" id="dueDate" name="dueDate" required >
                         <select class="infoBtn" id="importance" name="importance">
                             <option value="1">- Low</option>
                             <option value="2">- Medium</option>
@@ -154,6 +112,44 @@
             </form>
 
        </dialog>
+
+
+       
+
+
+
+
+
+
+       
+       <dialog id="editTaskDia">
+        <form id="editToDoForm">
+
+            <div class="Form-up">
+                <div class="title">
+                    <input type="text" id="editTitle" name="title" placeholder="Task name" required>
+                    <button id="editCloseBtn" class="closeBtn">X</button>
+                </div>
+
+                <div class="addinfo">
+                    <input  class="infoBtn" type="date" id="editDueDate" name="dueDate" required >
+                    <select class="infoBtn" id="editImportance" name="importance">
+                        <option value="1">- Low</option>
+                        <option value="2">- Medium</option>
+                        <option value="3">- High</option>
+                        </select>
+                </div>
+            </div>
+            <div class="Form-down">
+                <div class="Title">
+                    <textarea id="editDescription" name="description" placeholder="Task Description" maxlength="1000" required></textarea>
+                    <button id="editNewTaskBtn" class="SumBtn" type="submit">Save task</button>
+                    <div id="editInputError"></div>
+                </div>
+            </div>
+        </form>
+
+   </dialog>
           
 </body>
 </html>
